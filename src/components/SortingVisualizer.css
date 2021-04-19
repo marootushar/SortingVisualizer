@@ -3,8 +3,9 @@
   display: flex;
   margin: 0 auto;
   background-color: #000;
-  padding: 20px;
+  padding: 10px;
   justify-content: center;
+  height: 770px;
 }
 
 .arrayBar{

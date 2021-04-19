@@ -41,21 +41,21 @@ const SortingVisualizer = () => {
     const animations = mergesort(auxArray);
     const arrayBars = document.getElementsByClassName('arrayBar');
     for (let i = 0; i < animations.length; i++) {
-      const isColorChange = i % 3 !== 2;
-      if (isColorChange) {
-        const [barOneIdx, barTwoIdx] = animations[i];
-        const barOneStyle = arrayBars[barOneIdx].style;
-        const barTwoStyle = arrayBars[barTwoIdx].style;
+      const changeColor = i % 3 !== 2;
+      if (changeColor) {
+        const [b1Idx, b2Idx] = animations[i];
+        const b1Style = arrayBars[b1Idx].style;
+        const b2Style = arrayBars[b2Idx].style;
         const color = i % 3 === 0 ? COL1 : COL2;
         setTimeout(() => {
-          barOneStyle.backgroundColor = color;
-          barTwoStyle.backgroundColor = color;
+          b1Style.backgroundColor = color;
+          b2Style.backgroundColor = color;
         }, i * ANIMATION_SPEED);
       } else {
         setTimeout(() => {
-          const [barOneIdx, newHeight] = animations[i];
-          const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight}px`;
+          const [b1Idx, newHeight] = animations[i];
+          const b1Style = arrayBars[b1Idx].style;
+          b1Style.height = `${newHeight}px`;
         }, i * ANIMATION_SPEED);
       }
     }
@@ -63,17 +63,6 @@ const SortingVisualizer = () => {
       setArray(auxArray);
       setDisable(false);
     }, animations.length * ANIMATION_SPEED);
-    // arrayBars.forEach((e) => {
-    //   setTimeout(() => {
-    //     e.style.backgroundColor = COL2;
-    //   }, i * ANIMATION_SPEED);
-    //   i++;
-    // });
-    // (var i = 0; i < ARR_SIZE; i++) {
-    //   setTimeout(() => {
-    //     arrayBars[i].style.backgroundColor = COL2;
-    //   }, i * ANIMATION_SPEED);
-    // }
   };
 
   const quickSort = () => {};
