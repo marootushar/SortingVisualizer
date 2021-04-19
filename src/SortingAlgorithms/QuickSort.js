@@ -10,10 +10,10 @@ const quickSort = (array, start, end, animations) => {
     let pivotIdx = start;
     const pivot = array[end];
     for (let i = start; i < end; i++) {
+      animations.push([i, pivotIdx,1]);
+      animations.push([i, pivotIdx,0]);
       if (array[i] <= pivot) {
-        animations.push([i, pivotIdx]);
         animations.push([i, array[pivotIdx], pivotIdx, array[i]]);
-        animations.push([i, pivotIdx]);
         var temp = array[pivotIdx];
         array[pivotIdx] = array[i];
         array[i] = temp;
