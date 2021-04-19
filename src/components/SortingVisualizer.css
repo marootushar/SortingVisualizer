@@ -1,0 +1,30 @@
+.arrayContainer{
+  /* position:absolute; */
+  display: flex;
+  margin: 0 auto;
+  background-color: #000;
+  padding: 20px;
+  justify-content: center;
+}
+
+.arrayBar{
+  width: 2px;
+  background-color: #fff;
+  display:inline-block;
+  margin: 0px 1px;
+  padding: 0;
+  align-self: baseline;
+}
+
+.buttonsContainer{
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.buttonsContainer button{
+  font-size: larger;
+  margin: 0 5px;
+  align-self: center;
+  border: 2px solid black;
+}
