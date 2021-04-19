@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './SortingVisualizer.css';
 import { mergeSortAnimations } from '../SortingAlgorithms/MergeSort';
 import { quickSortAnimations } from '../SortingAlgorithms/QuickSort';
+import { bubbleSortAnimations } from '../SortingAlgorithms/BubbleSort';
 
-const ARR_SIZE = 300;
+const ARR_SIZE = 50;
 const COL1 = 'red';
 const COL2 = '#fff';
 const ANIMATION_SPEED = 5;
@@ -69,7 +70,6 @@ const SortingVisualizer = () => {
     setDisable(true);
     const auxArray = array.slice();
     const animations = quickSortAnimations(auxArray);
-    console.log(animations);
     const arrayBars = document.getElementsByClassName('arrayBar');
     for (let i = 0; i < animations.length; i++) {
       const changeColor = i % 3 !== 1;
@@ -105,7 +105,37 @@ const SortingVisualizer = () => {
     resetArray();
   };
 
-  const bubbleSort = () => {};
+  const bubbleSort = () => {
+    setDisable(true);
+    const auxArray = array.slice();
+    const animations = bubbleSortAnimations(auxArray);
+    console.log(animations);
+    const arrayBars = document.getElementsByClassName('arrayBar');
+    for (let i = 0; i < animations.length; i++) {
+      if (animations[i].length===3) {
+        const [b1Idx, b2Idx, colChoice] = animations[i];
+        const b1Style = arrayBars[b1Idx].style;
+        const b2Style = arrayBars[b2Idx].style;
+        const color = colChoice ? COL1 : COL2;
+        setTimeout(() => {
+          b1Style.backgroundColor = color;
+          b2Style.backgroundColor = color;
+        }, i * ANIMATION_SPEED);
+      } else if(animations[i].length===4) {
+        setTimeout(() => {
+          const [b1Idx, b1Height, b2Idx, b2Height] = animations[i];
+          const b1Style = arrayBars[b1Idx].style;
+          b1Style.height = `${b1Height}px`;
+          const b2Style = arrayBars[b2Idx].style;
+          b2Style.height = `${b2Height}px`;
+        }, i * ANIMATION_SPEED);
+      }
+    }
+    setTimeout(() => {
+      setArray(auxArray);
+      setDisable(false);
+    }, animations.length * ANIMATION_SPEED);
+  };
 
   const test = () => {
     for (var i = 0; i < 1000; i++) {
