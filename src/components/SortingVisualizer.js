@@ -67,15 +67,10 @@ const SortingVisualizer = () => {
   const quickSort = () => {
     const auxArray = array.slice();
     const animations = quickSortAnimations(auxArray);
-    animate(animations,auxArray);
+    animate(animations, auxArray);
   };
 
-  const heapSort = () => {
-    const newArray = array.slice().sort((a, b) => a - b);
-    const quickArray = quickSortAnimations(array);
-    console.log(arraysEqual(quickArray, newArray));
-    resetArray();
-  };
+  // const heapSort = () => {};
 
   const bubbleSort = () => {
     const auxArray = array.slice();
@@ -124,20 +119,20 @@ const SortingVisualizer = () => {
     }, animations.length * ANIMATION_SPEED);
   };
 
-  const test = () => {
-    for (var i = 0; i < 1000; i++) {
-      quickSort();
-    }
-  };
-  const arraysEqual = (a, b) => {
-    if (a === b) return true;
-    if (a == null || b == null) return false;
-    if (a.length !== b.length) return false;
-    for (var i = 0; i < a.length; ++i) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  };
+  // const test = () => {
+  //   for (var i = 0; i < 1000; i++) {
+  //     quickSort();
+  //   }
+  // };
+  // const arraysEqual = (a, b) => {
+  //   if (a === b) return true;
+  //   if (a == null || b == null) return false;
+  //   if (a.length !== b.length) return false;
+  //   for (var i = 0; i < a.length; ++i) {
+  //     if (a[i] !== b[i]) return false;
+  //   }
+  //   return true;
+  // };
 
   return (
     <>
@@ -169,7 +164,7 @@ const SortingVisualizer = () => {
         >
           Quick Sort
         </button>
-        <button
+        {/* <button
           onClick={() => {
             if (!disable) heapSort();
             else sendAlert();
@@ -177,7 +172,7 @@ const SortingVisualizer = () => {
           className='newArray'
         >
           Heap Sort
-        </button>
+        </button> */}
         <button
           onClick={() => {
             if (!disable) bubbleSort();
