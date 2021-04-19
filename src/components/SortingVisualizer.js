@@ -3,7 +3,7 @@ import './SortingVisualizer.css';
 import { mergeSortAnimations } from '../SortingAlgorithms/MergeSort';
 import { quickSortAnimations } from '../SortingAlgorithms/QuickSort';
 import { bubbleSortAnimations } from '../SortingAlgorithms/BubbleSort';
-
+import { selectionSortAnimations } from '../SortingAlgorithms/SelectionSort';
 const ARR_SIZE = 150;
 const COL1 = 'red';
 const COL2 = '#fff';
@@ -63,35 +63,9 @@ const SortingVisualizer = () => {
   };
 
   const quickSort = () => {
-    setDisable(true);
     const auxArray = array.slice();
     const animations = quickSortAnimations(auxArray);
-    console.log(animations);
-    const arrayBars = document.getElementsByClassName('arrayBar');
-    for (let i = 0; i < animations.length; i++) {
-      if (animations[i].length === 3) {
-        const [b1Idx, b2Idx, colChoice] = animations[i];
-        const b1Style = arrayBars[b1Idx].style;
-        const b2Style = arrayBars[b2Idx].style;
-        const color = colChoice ? COL1 : COL2;
-        setTimeout(() => {
-          b1Style.backgroundColor = color;
-          b2Style.backgroundColor = color;
-        }, i * ANIMATION_SPEED);
-      } else if (animations[i].length === 4) {
-        setTimeout(() => {
-          const [b1Idx, b1Height, b2Idx, b2Height] = animations[i];
-          const b1Style = arrayBars[b1Idx].style;
-          b1Style.height = `${b1Height}px`;
-          const b2Style = arrayBars[b2Idx].style;
-          b2Style.height = `${b2Height}px`;
-        }, i * ANIMATION_SPEED);
-      }
-    }
-    setTimeout(() => {
-      setArray(auxArray);
-      setDisable(false);
-    }, animations.length * ANIMATION_SPEED);
+    animate(animations,auxArray);
   };
 
   const heapSort = () => {
@@ -102,10 +76,21 @@ const SortingVisualizer = () => {
   };
 
   const bubbleSort = () => {
-    setDisable(true);
     const auxArray = array.slice();
     const animations = bubbleSortAnimations(auxArray);
-    console.log(animations);
+    animate(animations, auxArray);
+  };
+
+  const insertionSort = () => {};
+
+  const selectionSort = () => {
+    const auxArray = array.slice();
+    const animations = selectionSortAnimations(auxArray);
+    animate(animations, auxArray);
+  };
+
+  const animate = (animations, auxArray) => {
+    setDisable(true);
     const arrayBars = document.getElementsByClassName('arrayBar');
     for (let i = 0; i < animations.length; i++) {
       if (animations[i].length === 3) {
@@ -195,6 +180,24 @@ const SortingVisualizer = () => {
           className='newArray'
         >
           Bubble Sort
+        </button>
+        <button
+          onClick={() => {
+            if (!disable) insertionSort();
+            else sendAlert();
+          }}
+          className='newArray'
+        >
+          Insertion Sort
+        </button>
+        <button
+          onClick={() => {
+            if (!disable) selectionSort();
+            else sendAlert();
+          }}
+          className='newArray'
+        >
+          Selection Sort
         </button>
         <button onClick={() => window.location.reload()}>Refresh</button>
         {/* <button onClick={() => test()} className='newArray'>
