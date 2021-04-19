@@ -4,7 +4,7 @@ import { mergeSortAnimations } from '../SortingAlgorithms/MergeSort';
 import { quickSortAnimations } from '../SortingAlgorithms/QuickSort';
 import { bubbleSortAnimations } from '../SortingAlgorithms/BubbleSort';
 
-const ARR_SIZE = 300;
+const ARR_SIZE = 150;
 const COL1 = 'red';
 const COL2 = '#fff';
 const ANIMATION_SPEED = 5;
@@ -26,14 +26,10 @@ const SortingVisualizer = () => {
     setArray(arr);
   };
 
-  const arraysEqual = (a, b) => {
-    if (a === b) return true;
-    if (a == null || b == null) return false;
-    if (a.length !== b.length) return false;
-    for (var i = 0; i < a.length; ++i) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
+  const sendAlert = () => {
+    alert(
+      'A sorting algorithm is already running! Press refresh button to stop.'
+    );
   };
 
   const mergeSort = () => {
@@ -73,7 +69,7 @@ const SortingVisualizer = () => {
     console.log(animations);
     const arrayBars = document.getElementsByClassName('arrayBar');
     for (let i = 0; i < animations.length; i++) {
-      if (animations[i].length===3) {
+      if (animations[i].length === 3) {
         const [b1Idx, b2Idx, colChoice] = animations[i];
         const b1Style = arrayBars[b1Idx].style;
         const b2Style = arrayBars[b2Idx].style;
@@ -82,7 +78,7 @@ const SortingVisualizer = () => {
           b1Style.backgroundColor = color;
           b2Style.backgroundColor = color;
         }, i * ANIMATION_SPEED);
-      } else if(animations[i].length===4) {
+      } else if (animations[i].length === 4) {
         setTimeout(() => {
           const [b1Idx, b1Height, b2Idx, b2Height] = animations[i];
           const b1Style = arrayBars[b1Idx].style;
@@ -112,7 +108,7 @@ const SortingVisualizer = () => {
     console.log(animations);
     const arrayBars = document.getElementsByClassName('arrayBar');
     for (let i = 0; i < animations.length; i++) {
-      if (animations[i].length===3) {
+      if (animations[i].length === 3) {
         const [b1Idx, b2Idx, colChoice] = animations[i];
         const b1Style = arrayBars[b1Idx].style;
         const b2Style = arrayBars[b2Idx].style;
@@ -121,7 +117,7 @@ const SortingVisualizer = () => {
           b1Style.backgroundColor = color;
           b2Style.backgroundColor = color;
         }, i * ANIMATION_SPEED);
-      } else if(animations[i].length===4) {
+      } else if (animations[i].length === 4) {
         setTimeout(() => {
           const [b1Idx, b1Height, b2Idx, b2Height] = animations[i];
           const b1Style = arrayBars[b1Idx].style;
@@ -142,6 +138,15 @@ const SortingVisualizer = () => {
       quickSort();
     }
   };
+  const arraysEqual = (a, b) => {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  };
 
   return (
     <>
@@ -149,6 +154,7 @@ const SortingVisualizer = () => {
         <button
           onClick={() => {
             if (!disable) resetArray();
+            else sendAlert();
           }}
           className='newArray'
         >
@@ -157,6 +163,7 @@ const SortingVisualizer = () => {
         <button
           onClick={() => {
             if (!disable) mergeSort();
+            else sendAlert();
           }}
           className='newArray'
         >
@@ -165,6 +172,7 @@ const SortingVisualizer = () => {
         <button
           onClick={() => {
             if (!disable) quickSort();
+            else sendAlert();
           }}
           className='newArray'
         >
@@ -173,6 +181,7 @@ const SortingVisualizer = () => {
         <button
           onClick={() => {
             if (!disable) heapSort();
+            else sendAlert();
           }}
           className='newArray'
         >
@@ -181,11 +190,13 @@ const SortingVisualizer = () => {
         <button
           onClick={() => {
             if (!disable) bubbleSort();
+            else sendAlert();
           }}
           className='newArray'
         >
           Bubble Sort
         </button>
+        <button onClick={() => window.location.reload()}>Refresh</button>
         {/* <button onClick={() => test()} className='newArray'>
           Test
         </button> */}
