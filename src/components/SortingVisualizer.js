@@ -4,6 +4,8 @@ import { mergeSortAnimations } from '../SortingAlgorithms/MergeSort';
 import { quickSortAnimations } from '../SortingAlgorithms/QuickSort';
 import { bubbleSortAnimations } from '../SortingAlgorithms/BubbleSort';
 import { selectionSortAnimations } from '../SortingAlgorithms/SelectionSort';
+import { insertionSortAnimations } from '../SortingAlgorithms/InsertionSort';
+
 const ARR_SIZE = 150;
 const COL1 = 'red';
 const COL2 = '#fff';
@@ -81,7 +83,11 @@ const SortingVisualizer = () => {
     animate(animations, auxArray);
   };
 
-  const insertionSort = () => {};
+  const insertionSort = () => {
+    const auxArray = array.slice();
+    const animations = insertionSortAnimations(auxArray);
+    animate(animations, auxArray);
+  };
 
   const selectionSort = () => {
     const auxArray = array.slice();
