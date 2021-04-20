@@ -6,10 +6,10 @@ import { bubbleSortAnimations } from '../SortingAlgorithms/BubbleSort';
 import { selectionSortAnimations } from '../SortingAlgorithms/SelectionSort';
 import { insertionSortAnimations } from '../SortingAlgorithms/InsertionSort';
 
-const ARR_SIZE = 150;
+let ARR_SIZE = 150;
 const COL1 = 'red';
 const COL2 = '#fff';
-const ANIMATION_SPEED = 5;
+let ANIMATION_SPEED = 5;
 
 const SortingVisualizer = () => {
   const [array, setArray] = useState([]);
@@ -20,6 +20,33 @@ const SortingVisualizer = () => {
   }, []);
 
   const resetArray = () => {
+    if (ARR_SIZE < 5) {
+      ARR_SIZE = 5;
+      document.getElementById('size').value = '5';
+    }
+    if (ARR_SIZE > 200) {
+      ARR_SIZE = 200;
+      document.getElementById('size').value = '200';
+    }
+    if(ARR_SIZE>75){ANIMATION_SPEED=5}
+    else if (ARR_SIZE <= 75) {
+      ANIMATION_SPEED = 10;
+    }
+    else if (ARR_SIZE <= 40) {
+      ANIMATION_SPEED = 15;
+    }
+    else if (ARR_SIZE <= 20) {
+      ANIMATION_SPEED = 50;
+    }
+    else if (ARR_SIZE <= 15) {
+      ANIMATION_SPEED = 80;
+    }
+    else if (ARR_SIZE <= 10) {
+      ANIMATION_SPEED = 150;
+    }
+    else if (ARR_SIZE <= 6) {
+      ANIMATION_SPEED = 300;
+    }
     const arr = [];
     for (var i = 0; i < ARR_SIZE; i++) {
       var x = Math.floor(Math.random() * 750 + 5);
@@ -137,6 +164,17 @@ const SortingVisualizer = () => {
   return (
     <>
       <div className='buttonsContainer'>
+        <p>Number of Bars</p>
+        <input
+          type='number'
+          placeholder='150'
+          min='5'
+          max='200'
+          onChange={() => {
+            ARR_SIZE = document.getElementById('size').value;
+          }}
+          id='size'
+        ></input>
         <button
           onClick={() => {
             if (!disable) resetArray();
@@ -213,6 +251,7 @@ const SortingVisualizer = () => {
             style={{ height: `${value}px` }}
           ></div>
         ))}
+        <div id='maintainHeight'></div>
       </div>
     </>
   );
