@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/SortingVisualizer/static/css/main.591bd1c4.chunk.css",
-    "main.js": "/SortingVisualizer/static/js/main.c3f25119.chunk.js",
-    "main.js.map": "/SortingVisualizer/static/js/main.c3f25119.chunk.js.map",
+    "main.css": "/SortingVisualizer/static/css/main.09a45bf2.chunk.css",
+    "main.js": "/SortingVisualizer/static/js/main.1d364160.chunk.js",
+    "main.js.map": "/SortingVisualizer/static/js/main.1d364160.chunk.js.map",
     "runtime-main.js": "/SortingVisualizer/static/js/runtime-main.850d8401.js",
     "runtime-main.js.map": "/SortingVisualizer/static/js/runtime-main.850d8401.js.map",
     "static/js/2.e80e33f9.chunk.js": "/SortingVisualizer/static/js/2.e80e33f9.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.752751d4.chunk.js": "/SortingVisualizer/static/js/3.752751d4.chunk.js",
     "static/js/3.752751d4.chunk.js.map": "/SortingVisualizer/static/js/3.752751d4.chunk.js.map",
     "index.html": "/SortingVisualizer/index.html",
-    "static/css/main.591bd1c4.chunk.css.map": "/SortingVisualizer/static/css/main.591bd1c4.chunk.css.map",
+    "static/css/main.09a45bf2.chunk.css.map": "/SortingVisualizer/static/css/main.09a45bf2.chunk.css.map",
     "static/js/2.e80e33f9.chunk.js.LICENSE.txt": "/SortingVisualizer/static/js/2.e80e33f9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.850d8401.js",
     "static/js/2.e80e33f9.chunk.js",
-    "static/css/main.591bd1c4.chunk.css",
-    "static/js/main.c3f25119.chunk.js"
+    "static/css/main.09a45bf2.chunk.css",
+    "static/js/main.1d364160.chunk.js"
   ]
 }
