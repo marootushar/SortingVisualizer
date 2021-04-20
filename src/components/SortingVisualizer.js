@@ -28,28 +28,30 @@ const SortingVisualizer = () => {
       ARR_SIZE = 200;
       document.getElementById('size').value = '200';
     }
-    if(ARR_SIZE>75){ANIMATION_SPEED=5}
-    else if (ARR_SIZE <= 75) {
+    if (ARR_SIZE > 75) {
+      ANIMATION_SPEED = 5;
+    }
+    if (ARR_SIZE <= 75) {
       ANIMATION_SPEED = 10;
     }
-    else if (ARR_SIZE <= 40) {
+    if (ARR_SIZE <= 40) {
       ANIMATION_SPEED = 15;
     }
-    else if (ARR_SIZE <= 20) {
+    if (ARR_SIZE <= 20) {
       ANIMATION_SPEED = 50;
     }
-    else if (ARR_SIZE <= 15) {
+    if (ARR_SIZE <= 15) {
       ANIMATION_SPEED = 80;
     }
-    else if (ARR_SIZE <= 10) {
+    if (ARR_SIZE <= 10) {
       ANIMATION_SPEED = 150;
     }
-    else if (ARR_SIZE <= 6) {
+    if (ARR_SIZE <= 6) {
       ANIMATION_SPEED = 300;
     }
     const arr = [];
     for (var i = 0; i < ARR_SIZE; i++) {
-      var x = Math.floor(Math.random() * 750 + 5);
+      var x = Math.floor(Math.random() * 710 + 5);
       arr.push(x);
     }
     setArray(arr);
